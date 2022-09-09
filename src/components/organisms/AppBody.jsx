@@ -1,6 +1,6 @@
 import { Container, Box } from '@mui/material';
 import React from 'react';
-import { TodoContainer } from '../atoms';
+import { TodoContainer, EmptyBoard } from '../atoms';
 import TodoList from './TodoList';
 
 const AppBody = ({ currentChecklist, setCurrentChecklist }) => {
@@ -15,10 +15,14 @@ const AppBody = ({ currentChecklist, setCurrentChecklist }) => {
         }}
       >
         <TodoContainer>
-          <TodoList
-            currentChecklist={currentChecklist}
-            setCurrentChecklist={setCurrentChecklist}
-          />
+          {currentChecklist.length < 1 ? (
+            <EmptyBoard />
+          ) : (
+            <TodoList
+              currentChecklist={currentChecklist}
+              setCurrentChecklist={setCurrentChecklist}
+            />
+          )}
         </TodoContainer>
       </Box>
     </Container>
